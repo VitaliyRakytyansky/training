@@ -42,5 +42,6 @@ public class Task3 {
                 }
             }
         }
+        driver.close();
     }
 }
