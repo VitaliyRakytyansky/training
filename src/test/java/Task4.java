@@ -14,7 +14,7 @@ import org.openqa.selenium.ie.InternetExplorerDriver;
 
 public class Task4 {
 
-    public static WebDriver driver;
+    public  WebDriver driver;
 
     public Task4() {
         ChromeDriverManager.getInstance().setup();
@@ -132,7 +132,7 @@ public class Task4 {
     @After
 
     public void closeBrowser(){
-        driver.close();
+        driver.quit();
     }
 
 }

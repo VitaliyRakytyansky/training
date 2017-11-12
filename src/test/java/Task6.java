@@ -1,8 +1,5 @@
 import io.github.bonigarcia.wdm.ChromeDriverManager;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,6 +27,11 @@ public class Task6 {
     public void getToBasePage() {
         driver.get(homeUrl);
         driver.manage().window().maximize();
+    }
+
+    @After
+    public void stop(){
+        driver.quit();
     }
 
 

@@ -1,5 +1,7 @@
 import io.github.bonigarcia.wdm.ChromeDriverManager;
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,6 +11,20 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.List;
 
 public class Task3 {
+
+    public WebDriver driver;
+
+    @Before
+    public void getToThePage() {
+        driver.get("http://localhost/litecart/");
+        driver.manage().window().maximize();
+    }
+
+    @After
+
+    public void closeBrowser() {
+        driver.quit();
+    }
 
     @Test
     public void loginToAdminPage() {
@@ -26,22 +42,22 @@ public class Task3 {
         List<WebElement> menuItems = driver.findElements(By.cssSelector("#app-"));
 
         for (int i = 0; menuItems.size() > i; i++) {
-            WebElement menuItem = driver.findElements(By.cssSelector("#app-")).get(i);
+            WebElement menuItem = driver.findElement(By.xpath("//*[@id='app-']["+(i+1)+"]"));
             menuItem.click();
 
             List<WebElement> subItems = driver.findElements(By.cssSelector("#app- ul.docs li"));
+
+            boolean hiIsPresent = driver.findElements(By.cssSelector("#content h1")).size() > 0;
+            Assert.assertTrue("H1 is not present", hiIsPresent);
 
             if (subItems.size() > 0) {
                 for (int j = 0; subItems.size() > j; j++) {
                     WebElement subItem = driver.findElements(By.cssSelector("#app- ul.docs li")).get(j);
                     subItem.click();
 
-                    boolean hiIsPresent = driver.findElements(By.cssSelector("#content h1")).size() > 0;
-
                     Assert.assertTrue("H1 is not present", hiIsPresent);
                 }
             }
         }
-        driver.close();
     }
 }
