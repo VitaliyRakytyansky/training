@@ -109,6 +109,7 @@ public class Task5 {
         driver.findElement(By.name("save")).click();
 
         WebDriverWait wait = new WebDriverWait(driver, 5);
+
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("table.dataTable")));
         Boolean isProductAdded = driver.findElements(By.xpath("//td/a[contains(text(), 'Vitaliy')]")).size() > 0;
 

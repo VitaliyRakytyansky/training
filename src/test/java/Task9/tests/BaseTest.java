@@ -14,6 +14,7 @@ public class BaseTest {
             return;
         }
 
+
         app = new Application();
         tApp.set(app);
     }

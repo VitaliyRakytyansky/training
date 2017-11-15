@@ -14,4 +14,5 @@ public class ProductTest extends BaseTest{
 
         Assert.assertFalse("The products are still present on the page", app.isProductTablePresent());
     }
+
 }
